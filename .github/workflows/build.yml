@@ -1,0 +1,36 @@
+name: build only
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  PROJECT_ID: 'nest-advent-calendar-2019'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - uses: actions/checkout@v3.0.1
+      - name: Cache node modules
+        id: cache
+        uses: actions/cache@v3.0.2
+        with:
+          path: node_modules
+          key: v3-dependencies-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v3-dependencies-
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3.1.1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Build Application
+        run: |
+          yarn
+          yarn build
