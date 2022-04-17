@@ -9,5 +9,5 @@ export class User {
   @IsString()
   @MinLength(6)
   @MaxLength(20)
-  readonly password: string;
+  password: string;
 }
