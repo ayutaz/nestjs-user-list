@@ -7,6 +7,9 @@ NestJSを勉強するための簡易ユーザー管理サーバーAPIの作成
 * CI/CD環境の構築
 [参考サイト](https://qiita.com/potato4d/items/cb54785821bbcac2b994)
 
+* MongoDB周り
+[参考サイト](https://youtu.be/HQ3tjl_Sh9s)
+
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.

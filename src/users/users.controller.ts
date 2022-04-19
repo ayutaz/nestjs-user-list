@@ -1,6 +1,7 @@
 import { Body, Controller, Get, Post, ValidationPipe } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { User } from './user';
+import { CreateUserDto } from './dto/create-user.dto';
 
 @Controller('users')
 export class UsersController {
@@ -17,17 +18,12 @@ export class UsersController {
   }
 
   @Post(`/getUser`)
-  findOne(@Body(ValidationPipe) user: User): User {
-    return this.userService.findOne(user);
-  }
-
-  @Post(`/updateUser`)
-  update(@Body(ValidationPipe) user: User): void {
-    return this.userService.update(user);
+  findOne(): User {
+    return this.userService.findOne();
   }
 
   @Post(`/addUser`)
-  create(@Body(ValidationPipe) user: User): void {
+  create(@Body(ValidationPipe) user: CreateUserDto): void {
     return this.userService.create(user);
   }
 }
