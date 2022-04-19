@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { User } from './user';
 import { CreateUserDto } from './dto/create-user.dto';
 
 @Injectable()
@@ -10,15 +9,15 @@ export class UsersService {
     this.users.push(user);
   }
 
-  findOne() {
-    return this.users.find((user) => user === user);
+  remove(user: CreateUserDto) {
+    this.users.splice(this.users.indexOf(user), 1);
   }
 
-  remove(user: User) {
-    this.users = this.users.splice(this.users.indexOf(user), 1);
-  }
-
-  findAll() {
+  findAll(): CreateUserDto[] {
     return this.users;
+  }
+
+  update(user: CreateUserDto) {
+    this.users[this.users.indexOf(user)] = user;
   }
 }
